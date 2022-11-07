@@ -22,7 +22,6 @@ export default function Home() {
       setCopied(false);
     }, 2000);
   };
-
   return (
     <div className="grid place-items-center h-screen">
       <Head>
