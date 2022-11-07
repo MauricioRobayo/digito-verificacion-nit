@@ -1,7 +1,6 @@
 import Head from "next/head";
-import { useRouter } from "next/router";
 import { getVerificationDigit } from "nit-verifier";
-import { ChangeEvent, useMemo, useState } from "react";
+import { ChangeEvent, useState } from "react";
 
 const formatter = new Intl.NumberFormat("es-CO", { useGrouping: true });
 
