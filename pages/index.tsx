@@ -13,12 +13,10 @@ export default function Home() {
     const value = e.target.value.replace(/\D/g, "");
     setNit(value.length > 15 ? value.slice(0, 15) : value);
   };
-  const fullNit = useMemo(() => {
-    const formattedNit = formatter.format(Number(nit));
-    return `${formattedNit}-${getVerificationDigit(nit)}`;
-  }, [nit]);
+  const verificationDigit = getVerificationDigit(nit);
+  const formattedNit = formatter.format(Number(nit));
   const copyToClipboard = () => {
-    navigator.clipboard.writeText(fullNit);
+    navigator.clipboard.writeText(`${formattedNit}-${verificationDigit}`);
     setCopied(true);
     setTimeout(() => {
       setCopied(false);
@@ -48,7 +46,12 @@ export default function Home() {
           {nit && (
             <div className="text-green-900">
               <button onClick={copyToClipboard}>
-                <div className="text-4xl font-bold">{fullNit}</div>
+                <div className="text-4xl">
+                  {formattedNit}-
+                  <span className="text-red-700 font-bold">
+                    {verificationDigit}
+                  </span>
+                </div>
                 <div>{copied ? "Copiado" : "Copiar"}</div>
               </button>
             </div>
