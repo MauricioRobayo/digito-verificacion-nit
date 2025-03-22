@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { getVerificationDigit } from "nit-verifier";
 import { ChangeEvent, useState } from "react";
+import Link from "next/link";
 
 const formatter = new Intl.NumberFormat("es-CO", { useGrouping: true });
 
@@ -56,7 +57,14 @@ export default function Home() {
           )}
         </article>
       </main>
-      <footer></footer>
+      <footer>
+        <Link
+          href="https://www.registronit.com"
+          className="text-blue-600 text-lg tracking-wide"
+        >
+          Consulta de información empresarial
+        </Link>
+      </footer>
     </div>
   );
 }
